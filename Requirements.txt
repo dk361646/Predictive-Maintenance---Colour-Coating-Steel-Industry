@@ -1,12 +1,7 @@
-pandas
+tensorflow
+keras
 numpy
+pandas
 scikit-learn
 matplotlib
 seaborn
-transformers
-nltk
-jupyter
-tqdm
-tensorflow
-tensorflow-hub
-tensorflow-text
