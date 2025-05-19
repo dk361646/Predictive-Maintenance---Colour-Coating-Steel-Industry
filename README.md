@@ -5,7 +5,7 @@ This project develops a deep learning-based Predictive Maintenance (PdM) model u
 
 ---
 
-## 🔧 Project Overview
+## Project Overview
 
 - **Objective**: Predict machine failure and estimate RUL for motors in a color coating line.
 - **Approach**: Time-series modeling using LSTM with dual outputs.
@@ -15,7 +15,7 @@ This project develops a deep learning-based Predictive Maintenance (PdM) model u
 
 ---
 
-## 📁 Dataset Details
+## Dataset Details
 
 The dataset is synthetically generated and structured as follows:
 
@@ -31,7 +31,7 @@ The dataset is synthetically generated and structured as follows:
 
 ---
 
-## 🧠 Model Architecture
+## Model Architecture
 
 - Input shape: `(24, 5)` — sequences of 24 timesteps with 5 features
 - Shared LSTM layers
@@ -45,7 +45,7 @@ The dataset is synthetically generated and structured as follows:
 
 ---
 
-## 🛠 Workflow
+## Workflow
 
 1. **Data Generation**: Create realistic time-series data with degradation patterns and noise.
 2. **Preprocessing**:
@@ -62,53 +62,28 @@ The dataset is synthetically generated and structured as follows:
    - Query by motor ID to return:
      - Will it fail in next 24 hours?
      - Its predicted RUL
-
+     - 
 ---
 
-## 🧪 Example Usage
-
-```python
-motor_id = int(input("Enter motor ID (1-5): "))
-X_input = get_latest_sequence_for_motor(motor_id)
-X_input_scaled = scaler_X.transform(X_input).reshape(1, 24, 5)
-
-failure_prob, predicted_rul = model.predict(X_input_scaled)
-print(f"Failure Probability (next 24 hrs): {failure_prob[0][0]:.2f}")
-print(f"Predicted RUL (hours): {rul_scaler.inverse_transform(predicted_rul)[0][0]:.2f}")
-```
-
----
-
-## 🔍 Evaluation Example
+## Evaluation Example
 
 ```text
+Accuracy: 0.9737
 Confusion Matrix:
-[[87095     0]
- [  285     0]]
-
-Accuracy: 99.67%
-Precision: 0.00%
-Recall: 0.00%
+[[84950   775]
+ [ 1525   130]]
+Precision: 0.1436
+Recall: 0.0785
+F1-Score: 0.1016
 ```
-
-> Note: Class imbalance is being addressed with `class_weight` or `sample_weight`.
-
 ---
 
-## 🖥 Tech Stack
+## Tech Stack
 
 - Python 3.x
 - TensorFlow / Keras
 - NumPy, Pandas, scikit-learn
 - Matplotlib / Seaborn (for visualization)
-
----
-
-## 📌 To-Do
-
-- Improve class balance via oversampling or better weighting
-- Explore advanced architectures (e.g., attention-based models)
-- Model versioning and deployment
 
 ---
 
